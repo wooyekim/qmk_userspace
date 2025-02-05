@@ -68,9 +68,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Tarmak-DH 4
  * ,-----------------------------------------------------------------------------------.
- * | _/~  |   Q  |   W  |   F  |   P  |   B  |   J  |   L  |   U  |   Y  |   ;  | Bksp |
+ * | _/~  |   Q  |   W  |   F  |   P  |   B  |   J  |   U  |   I  |   Y  |   ;  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |Ct/Esc|   A  |   R  |   S  |   T  |   G  |   M  |   N  |   E  |   I  |   O  |  '   |
+ * |Ct/Esc|   A  |   R  |   S  |   T  |   G  |   M  |   N  |   E  |   L  |   O  |  '   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |  [   |   Z  |   X  |   C  |   D  |   V  |   K  |   H  |   ,  |   .  |   /  |  ]   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -78,8 +78,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [LAYER_COLEMAK] = LAYOUT_planck_grid(
-    UDS_TLD, KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
-    ESC_CTL, KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT,
+    UDS_TLD, KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_U,    KC_I,    KC_Y,    KC_SCLN, KC_BSPC,
+    ESC_CTL, KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_M,    KC_N,    KC_E,    KC_L,    KC_O,    KC_QUOT,
     KC_LBRC, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, KC_RBRC,
     KC_LPRN, KC_TAB,  KC_LGUI, KC_LALT, SPC_SFT, NAV,     NUM,     ENT_SFT, SC_HAEN, SC_HANJ, KC_BSLS, KC_RPRN
 ),
