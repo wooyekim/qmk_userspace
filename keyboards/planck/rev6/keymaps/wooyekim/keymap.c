@@ -34,71 +34,79 @@ enum custom_keycodes {
   SC_HAEN,
   SC_HANJ,
   // Misc
-  UDS_TLD,
+  TLD_GRV,
 };
 
 #define SPC_SFT LSFT_T(KC_SPC)
-#define TAB_NAV LT(LAYER_NAV, KC_TAB)
+#define SPC_NUM LT(LAYER_NUM, KC_SPC)
+#define ENT_SFT RSFT_T(KC_ENT)
 #define ENT_NUM LT(LAYER_NUM, KC_ENT)
-#define ESC_CTL LCTL_T(KC_ESC)
+#define UDS_CTL LCTL_T(KC_UNDS)
+#define TAB_CTL LCTL_T(KC_TAB)
+#define TAB_NAV LT(LAYER_NAV, KC_TAB)
+#define BSP_CTL RCTL_T(KC_BSPC)
+#define LBR_SFT LSFT_T(KC_LBRC)
+#define RBR_SFT RSFT_T(KC_RBRC)
+#define NAV     MO(LAYER_NAV)
+#define NUM     MO(LAYER_NUM)
 #define COLEMAK DF(LAYER_COLEMAK)
 #define QWERTY  DF(LAYER_QWERTY)
 #define __HLD__ _______
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-/* Qwerty (with P/; swapped)
+/* Qwerty
  * ,-----------------------------------------------------------------------------------.
- * | _/~  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   ;  |  \   |
+ * | Esc  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   ;  | "/'  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |Ct/Esc|   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   P  |  '   |
+ * |_/Ctrl|   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   P  |  =   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | [    |   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |  ]   |
+ * | [/Sft|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  | ]/Sft|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | (    | Meta | Alt  |   -  |SpcSft|TabNav| Bksp |EntNum|   =  |Hangul| Hanja|  )   |
+ * |  (   |   ~  | Meta | Alt  |TabNav|SpcNum|EntSft|BspCtl|Hangul| Hanja|   \  |  )   |
  * `-----------------------------------------------------------------------------------'
  */
 [LAYER_QWERTY] = LAYOUT_planck_grid(
-    UDS_TLD, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_SCLN, KC_BSLS,
-    ESC_CTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_P,    KC_QUOT,
-    KC_LBRC, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RBRC,
-    KC_LPRN, KC_LGUI, KC_LALT, KC_MINS, SPC_SFT, TAB_NAV, KC_BSPC, ENT_NUM, KC_EQL,  SC_HAEN, SC_HANJ, KC_RPRN
+    KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_SCLN, KC_DQUO,
+    UDS_CTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_P,    KC_EQL,
+    LBR_SFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, RBR_SFT,
+    KC_LPRN, KC_TILD, KC_LGUI, KC_LALT, TAB_NAV, SPC_NUM, ENT_SFT, BSP_CTL, SC_HAEN, SC_HANJ, KC_BSLS, KC_RPRN
 ),
 
 /* Tarmak-DH 4
  * ,-----------------------------------------------------------------------------------.
- * | _/~  |   Q  |   W  |   F  |   P  |   B  |   J  |   U  |   I  |   Y  |   ;  |  \   |
+ * | Esc  |   Q  |   W  |   F  |   P  |   B  |   J  |   U  |   I  |   Y  |   ;  | "/'  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |Ct/Esc|   A  |   R  |   S  |   T  |   G  |   M  |   N  |   E  |   L  |   O  |  '   |
+ * |_/Ctrl|   A  |   R  |   S  |   T  |   G  |   M  |   N  |   E  |   L  |   O  |  =   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | [    |   Z  |   X  |   C  |   D  |   V  |   K  |   H  |   ,  |   .  |   /  |  ]   |
+ * | [/Sft|   Z  |   X  |   C  |   D  |   V  |   K  |   H  |   ,  |   .  |   /  | ]/Sft|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | (    | Meta | Alt  |   -  |SpcSft|TabNav| Bksp |EntNum|   =  |Hangul| Hanja|  )   |
+ * |  (   |   ~  | Meta | Alt  |TabNav|SpcNum|EntSft|BspCtl|Hangul| Hanja|   \  |  )   |
  * `-----------------------------------------------------------------------------------'
  */
 [LAYER_COLEMAK] = LAYOUT_planck_grid(
-    UDS_TLD, KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_U,    KC_I,    KC_Y,    KC_SCLN, KC_BSLS,
-    ESC_CTL, KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_M,    KC_N,    KC_E,    KC_L,    KC_O,    KC_QUOT,
-    KC_LBRC, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, KC_RBRC,
-    KC_LPRN, KC_LGUI, KC_LALT, KC_MINS, SPC_SFT, TAB_NAV, KC_BSPC, ENT_NUM, KC_EQL,  SC_HAEN, SC_HANJ, KC_RPRN
+    KC_ESC,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_U,    KC_I,    KC_Y,    KC_SCLN, KC_DQUO,
+    UDS_CTL, KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_M,    KC_N,    KC_E,    KC_L,    KC_O,    KC_EQL,
+    LBR_SFT, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, RBR_SFT,
+    KC_LPRN, KC_TILD, KC_LGUI, KC_LALT, TAB_NAV, SPC_NUM, ENT_SFT, BSP_CTL, SC_HAEN, SC_HANJ, KC_BSLS, KC_RPRN
 ),
 
 /* Number 
  * ,-----------------------------------------------------------------------------------.
- * |  `   |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  |      |
+ * |      |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  |  '   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
+ * |  -   |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  |  +   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |  {   |      |      |      |      |      |      |      |   <  |   >  |   ?  |  }   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      | Meta | Alt  |      | Space|Adjust| Bksp | Hold |      |      |      |      |
+ * |  (   |   `  | Meta | Alt  |Adjust| Hold |      | Bksp |      |      |   |  |  )   |
  * `-----------------------------------------------------------------------------------'
  */
 [LAYER_NUM] = LAYOUT_planck_grid(
-    KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, XXXXXXX,
-    KC_LCTL, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, KC_LGUI, KC_LALT, XXXXXXX, KC_SPC,  _______, KC_BSPC, __HLD__, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+    XXXXXXX, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_QUOT,
+    KC_MINS, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_PLUS,
+    KC_LCBR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LT,   KC_GT,   KC_QUES, KC_RCBR,
+    KC_LPRN, KC_GRV,  KC_LGUI, KC_LALT,  _______, __HLD__, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PIPE, KC_RPRN
 ),
 
 /* Navigation
@@ -107,16 +115,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  * |      | Meta | Alt  | Ctrl | Shift|      | Left | Down |  Up  | Right|      |      |
  * `-----------------------------------------------------------------------------------'
- * |      |      |      |      |      |      | Home | PgDn | PgUp | End  |      |      |
+ * |      |      | OS   | Qwty | Clmk |      | Home | PgDn | PgUp | End  |      |      |
  * `-----------------------------------------------------------------------------------'
- * |      |      |      |      |      | Hold |      |Adjust|      | Clmk | Qwty |  OS  |
+ * |      |      |      |      | Hold |Adjust| Enter| Bksp |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [LAYER_NAV] = LAYOUT_planck_grid(
     KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
     XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, __HLD__, XXXXXXX, _______, XXXXXXX, COLEMAK, QWERTY,  SWAP_OS
+    XXXXXXX, XXXXXXX, SWAP_OS, QWERTY,  COLEMAK, XXXXXXX, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, __HLD__, SC_HANJ, SC_HAEN, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 ),
 
 /* Adjust (Lower + Raise)
@@ -128,14 +136,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      | Hold |      | Hold |      |      |      |      |
+ * |      |      |      |      | Hold | Hold |      |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [LAYER_ADJUST] = LAYOUT_planck_grid(
     XXXXXXX, RESET,   DB_TOGG, RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, __HLD__, XXXXXXX, __HLD__, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, __HLD__, __HLD__, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 )
 
 };
@@ -169,7 +177,9 @@ const os_variant_key_t** os_variant_keys = (const os_variant_key_t*[]){
 
 custom_ths_key_t** custom_ths_keys = (custom_ths_key_t*[]){
   CUSTOM_SHIFT_KEY(KC_BSPC, KC_BSPC, KC_DEL),
-  CUSTOM_SHIFT_KEY(UDS_TLD, KC_UNDS, KC_TILD),
+  CUSTOM_SHIFT_KEY(KC_DQUO, KC_DQUO, KC_QUOT),
+  CUSTOM_SHIFT_KEY(UDS_CTL, KC_UNDS, KC_MINS),
+  CUSTOM_SHIFT_KEY(TLD_GRV, KC_TILD, KC_GRV),
   NULL
 };
 
