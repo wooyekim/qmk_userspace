@@ -44,7 +44,7 @@ enum custom_keycodes {
 #define UDS_CTL LCTL_T(KC_UNDS)
 #define TAB_CTL LCTL_T(KC_TAB)
 #define TAB_NAV LT(LAYER_NAV, KC_TAB)
-#define BSP_CTL RCTL_T(KC_BSPC)
+#define BSP_CTL LCTL_T(KC_BSPC)
 #define LBR_SFT LSFT_T(KC_LBRC)
 #define RBR_SFT RSFT_T(KC_RBRC)
 #define NAV     MO(LAYER_NAV)
