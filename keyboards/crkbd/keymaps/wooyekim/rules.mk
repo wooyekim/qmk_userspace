@@ -1,2 +1,4 @@
 # VIA_ENABLE = yes
 # VIAL_ENABLE = yes
+OS_DETECTION_ENABLE = yes
+CONSOLE_ENABLE = yes
