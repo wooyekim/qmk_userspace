@@ -35,25 +35,24 @@ enum custom_keycodes {
   // Shortcuts
   SC_HAEN,
   SC_HANJ,
-  CMK_QTY,
 };
 
 #define NUM      MO(LAYER_NUM)
 #define NAV      MO(LAYER_NAV)
 #define ADJUST   MO(LAYER_ADJUST)
-#define COLEMAK  DF(LAYER_COLEMAK)
-#define QWERTY   DF(LAYER_QWERTY)
 #define SPC_LSFT LSFT_T(KC_SPC)
 #define ENT_RSFT RSFT_T(KC_ENT)
 #define GRV_CTL  LCTL_T(KC_GRV)
 #define TAB_CTL  LCTL_T(KC_TAB)
 #define UDS_CTL  LCTL_T(KC_UNDS)
+#define QTY_LALT LALT_T(KC_0)
+#define CMK_LALT LALT_T(KC_1)
 #define __HLD__ _______
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [LAYER_QWERTY] = LAYOUT_split_3x6_3_ex2(
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
-       KC_ESC,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T, KC_LALT,    CMK_QTY,    KC_Y,    KC_U,    KC_I,    KC_O, KC_SCLN,  KC_EQL,
+       KC_ESC,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,QTY_LALT,   CMK_LALT,    KC_Y,    KC_U,    KC_I,    KC_O, KC_SCLN,  KC_EQL,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------|--------+--------+--------+--------+--------+--------|
       TAB_CTL,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G, KC_LGUI,    SC_HAEN,    KC_H,    KC_J,    KC_K,    KC_L,    KC_P, UDS_CTL,
   //|--------+--------+--------+--------+--------+--------|--------'  `--------|--------+--------+--------+--------+--------+--------|
@@ -65,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LAYER_COLEMAK] = LAYOUT_split_3x6_3_ex2(
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
-       KC_ESC,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B, KC_LALT,    CMK_QTY,    KC_J,    KC_U,    KC_I,    KC_Y, KC_SCLN,  KC_EQL,
+       KC_ESC,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,QTY_LALT,   CMK_LALT,    KC_J,    KC_U,    KC_I,    KC_Y, KC_SCLN,  KC_EQL,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------|--------+--------+--------+--------+--------+--------|
       TAB_CTL,    KC_A,    KC_R,    KC_S,    KC_T,    KC_G, KC_LGUI,    SC_HAEN,    KC_M,    KC_N,    KC_E,    KC_L,    KC_O, UDS_CTL,
   //|--------+--------+--------+--------+--------+--------|--------'  `--------|--------+--------+--------+--------+--------+--------|
@@ -77,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LAYER_NUM] = LAYOUT_split_3x6_3_ex2(
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
-      KC_TILD, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC, KC_LALT,    CMK_QTY, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_PIPE,
+      KC_TILD, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,QTY_LALT,   CMK_LALT, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_PIPE,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------|--------+--------+--------+--------+--------+--------|
       GRV_CTL,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5, KC_LGUI,    SC_HAEN,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_BSLS,
   //|--------+--------+--------+--------+--------+--------|--------'  `--------|--------+--------+--------+--------+--------+--------|
@@ -89,11 +88,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LAYER_NAV] = LAYOUT_split_3x6_3_ex2(
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
-      XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_LALT,    CMK_QTY,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10, XXXXXXX,
+      XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,  QTY_LALT,   CMK_LALT,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------|--------+--------+--------+--------+--------+--------|
       KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LGUI,    SC_HAEN, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, XXXXXXX, KC_F11,
   //|--------+--------+--------+--------+--------+--------|--------'  `--------|--------+--------+--------+--------+--------+--------|
-      XXXXXXX, XXXXXXX, SWAP_OS,  QWERTY, COLEMAK, SC_HANJ,                      KC_HOME, KC_PGDN, KC_PGUP,  KC_END, XXXXXXX, KC_F12,
+      XXXXXXX, XXXXXXX, SWAP_OS, XXXXXXX, XXXXXXX, SC_HANJ,                      KC_HOME, KC_PGDN, KC_PGUP,  KC_END, XXXXXXX, KC_F12,
   //|--------+--------+--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------+--------+--------|
                                               NUM,SPC_LSFT, KC_DQUO,    KC_BSPC,ENT_RSFT,     NAV
                                       //`--------------------------'  `--------------------------'
@@ -101,7 +100,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LAYER_ADJUST] = LAYOUT_split_3x6_3_ex2(
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LALT,    CMK_QTY, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT,
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,QTY_LALT,   CMK_LALT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------|--------+--------+--------+--------+--------+--------|
       KC_LCTL, RM_TOGG, RM_HUEU, RM_SATU, RM_VALU, XXXXXXX, KC_LGUI,    SC_HAEN, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|--------'  `--------|--------+--------+--------+--------+--------+--------|
@@ -138,9 +137,16 @@ bool process_haen(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
-bool process_df_switch(uint16_t keycode, keyrecord_t *record) {
-  if (keycode == CMK_QTY && record->event.pressed) {
-    toggle_qwerty_colemak();
+bool process_default_layer2(uint16_t keycode, keyrecord_t *record) {
+  if (IS_QK_MOD_TAP(keycode) && record->tap.count == 0) {
+    return true;
+  }
+  if (keycode == QTY_LALT) {
+    default_layer_set(1 << LAYER_QWERTY);
+    return false;
+  }
+  if (keycode == CMK_LALT) {
+    default_layer_set(1 << LAYER_COLEMAK);
     return false;
   }
   return true;
@@ -165,7 +171,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   PROCESS_FN(process_haen, keycode, record);
   PROCESS_FN(process_os_variant_keys, keycode, record, SWAP_OS);
   PROCESS_FN(process_custom_ths_keys, keycode, record);
-  PROCESS_FN(process_df_switch, keycode, record);
+  PROCESS_FN(process_default_layer2, keycode, record);
   return true;
 }
 
